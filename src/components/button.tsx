@@ -2,22 +2,27 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
-import { useRipple } from "../hooks/useRipple";
+import '../css/button.css'
 
 const buttonVariants = cva(
-  "inline-flex select-none items-center justify-center rounded-xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50 disabled:pointer-events-none cursor-pointer",
+  "inline-flex select-none items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50 disabled:pointer-events-none cursor-pointer",
   {
     variants: {
       variant: {
         default:
-          "bg-green-600 text-white hover:bg-green-700 border-2 border-green-800",
-        secondary:
-          "bg-green-100 text-green-800 hover:bg-green-200 border-2 border-green-300",
+          "bg-primary hover:bg-primary border-border duration-300 transition-all ease-in-out",
+        success:
+          "bg-success hover:bg-success border-border duration-300 transition-all ease-in-out",
+        danger:
+          "bg-danger hover:bg-danger border-border duration-300 transition-all ease-in-out",
+        accent:
+          "bg-accent hover:bg-accent text-accent duration-300 transition-all ease-in-out",
         outline:
-          "bg-transparent text-green-800 border-2 border-green-800 hover:bg-green-50",
+          "bg-[#00000000] hover:bg-[#e5ddc5] border-border duration-300 transition-all ease-in-out",
         ghost:
-          "bg-transparent text-green-800 hover:bg-green-100 border-2 border-transparent",
-        link: "bg-transparent text-green-700 underline-offset-4 hover:underline border-2 border-transparent px-1", // link is boxy by padding, but no border
+          "bg-[#00000000] text-primary hover:bg-[#f1eedc] border-2 border-transparent",
+        link:
+          "bg-transparent text-primary underline-offset-4 hover:underline border-2 border-transparent px-1",
       },
       size: {
         sm: "h-9 px-3",
@@ -34,26 +39,16 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const internalRef = React.useRef<HTMLButtonElement>(null);
-    const mergedRef = (node: HTMLButtonElement) => {
-      if (typeof ref === "function") ref(node);
-      else if (ref)
-        (ref as React.MutableRefObject<HTMLButtonElement>).current = node;
-      internalRef.current = node;
-    };
-
-    useRipple(internalRef);
+  ({ className, variant, size, asChild = false, ...props }) => {
 
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
-        ref={mergedRef}
         className={cn(
           "relative overflow-hidden",
           buttonVariants({ variant, size }),

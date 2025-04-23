@@ -1,20 +1,39 @@
 @import "tailwindcss";
 
+/*
+Color Palletes:
+#EDE8DC
+
+//Default Mode
+#F1EEDC
+#E5DDC5
+
+//Success Mode
+#A5B68D
+#C1CFA1
+
+//Destructive Mode
+#DC8686
+#B06161
+
+//Border
+#0C0C0C
+
+
+*/
 
 .ripple {
-    position: absolute;
-    border-radius: 9999px;
-    background-color: rgba(36, 181, 50, 0.253); 
-    animation: ripple 600ms linear;
-    pointer-events: none;
-    transform: scale(0);
-  }
-  
-  @keyframes ripple {
-    to {
-      transform: scale(2);
-      opacity: 0;
-    }
-  }
+  position: absolute;
+  border-radius: 9999px;
+  background-color: rgba(36, 181, 50, 0.253);
+  animation: ripple 600ms linear;
+  pointer-events: none;
+  transform: scale(0);
+}
 
-  
+@keyframes ripple {
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
