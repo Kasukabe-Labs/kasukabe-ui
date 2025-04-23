@@ -18,7 +18,7 @@ const buttonVariants = cva(
         accent:
           "bg-accent hover:bg-accent text-accent duration-300 transition-all ease-in-out",
         outline:
-          "bg-[#00000000] hover:bg-[#e5ddc5] border-border duration-300 transition-all ease-in-out",
+          "bg-[#00000000] hover:bg-[#f1eedc] border-border duration-300 transition-all ease-in-out",
         ghost:
           "bg-[#00000000] text-primary hover:bg-[#f1eedc] border-2 border-transparent",
         link:

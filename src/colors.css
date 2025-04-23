@@ -1,8 +1,9 @@
 /* colors.css */
 /* Base color system using CSS custom properties (variables) */
 :root {
-  /*Transparent*/
-  --color-blank: #00000000;
+  /*Background*/
+  --color-background: #e2f1e7;
+
   /* Primary colors */
   --color-primary: #f1eedc;
   --color-primary-hover: #e5ddc5;
@@ -69,6 +70,10 @@
 }
 .bg-danger:hover {
   background-color: var(--color-danger-hover);
+}
+
+.bg-background {
+  background-color: var(--color-background);
 }
 
 .text-secondary {
